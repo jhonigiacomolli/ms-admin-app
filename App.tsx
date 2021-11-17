@@ -4,8 +4,10 @@ import { useFonts } from 'expo-font'
 import AppLoading from 'expo-app-loading'
 import { Gafata_400Regular } from '@expo-google-fonts/gafata'
 import { Jost_500Medium, Jost_600SemiBold } from '@expo-google-fonts/jost'
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Background } from 'components/background';
+import { Login } from 'screens/login';
+import { AuthContextProvider } from 'hooks/auth';
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
@@ -19,15 +21,17 @@ export default function App() {
   }
 
   return (
-    <Background>
-      <View >
-        <StatusBar 
-          barStyle="light-content" 
-          backgroundColor="transparent" 
-          translucent 
-        />
-      </View>
-
-    </Background>
+    <AuthContextProvider>
+      <Background>
+        <View >
+          <StatusBar 
+            barStyle="light-content" 
+            backgroundColor="transparent" 
+            translucent 
+            />
+          <Login />
+        </View>
+      </Background>
+    </AuthContextProvider>
   );
 }

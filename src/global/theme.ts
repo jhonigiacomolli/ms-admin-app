@@ -5,6 +5,7 @@ export const theme= {
         primary80: '#4A005C',
         primary70: '#6A0785',
         primary60: '#B100E1',
+        primary60Alpha: '#B100E11C',
         primary50: '#BD7BF0',
         secondary: '#E51C44',
         tertiary: '#080808',
