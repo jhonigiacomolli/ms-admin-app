@@ -1,3 +1,6 @@
+import { FC, FunctionComponent, ReactElement, ReactNode } from "react"
+import { SvgProps } from "react-native-svg"
+
 export type Type_MessageBox = {
     visible?: boolean
     message?: string
@@ -20,7 +23,11 @@ export type Type_Section = {
         administrator: boolean
         editor: boolean
         contributor: boolean
-    }
+    },
+    endpointGet: string
+    endpointPost: string
+    endpointDelete: string
+    component: () => ReactElement | null
 }
 export type Type_User = {
     id: number
@@ -36,4 +43,10 @@ export type Type_API_Response<T> = {
     status: number
     message: string
     data: T
+}
+
+export type Type_IconsList = 'edit' | 'add' | 'graph' | 'list' | 'config' | 'trash' | 'none'
+
+export type Type_ButtonIcons = {
+    [key in Type_IconsList]: FC<SvgProps>
 }

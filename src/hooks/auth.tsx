@@ -34,7 +34,7 @@ export const AuthContextProvider = ({ children }:AuthContextProviderProps) => {
     
     const updateApiPath = (domain: string) => {
         setApiPath(`https://${apiBasePath}.${domain}/ms-api/v1`)
-    }
+    }    
 
     const getUsers =  async (domain: string) => {
         try {

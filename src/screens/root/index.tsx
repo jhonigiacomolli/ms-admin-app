@@ -1,17 +1,16 @@
-import { StatusBar } from 'react-native';
-import React from 'react';
+import React from 'react'
+import { useAuth } from 'hooks/auth'
 import { useFonts } from 'expo-font'
+import { Login } from 'screens/sign-in'
+import { Routes } from 'screens/routes'
+import { StatusBar } from 'react-native'
 import AppLoading from 'expo-app-loading'
+import { useGlobalContext } from 'hooks/global'
+import { Background } from 'components/background'
+import { MessageBox } from 'components/messages/message-box'
 import { Gafata_400Regular } from '@expo-google-fonts/gafata'
+import { NavigationContainer } from '@react-navigation/native'
 import { Jost_500Medium, Jost_600SemiBold } from '@expo-google-fonts/jost'
-import { View } from 'react-native';
-import { Background } from 'components/background';
-import { Login } from 'screens/sign-in';
-import { MessageBox } from 'components/messages/message-box';
-import { useGlobalContext } from 'hooks/global';
-import { useAuth } from 'hooks/auth';
-import { Routes } from '../routes';
-import { style } from './styles';
 
 export const Root = () => {
   const { message } = useGlobalContext()
@@ -28,21 +27,21 @@ export const Root = () => {
 
   return (
     <Background>
-        <View style={style.container}>
-            <StatusBar 
-                barStyle="light-content" 
-                backgroundColor="transparent" 
-                translucent 
-                />
-            {
-              loggedUser.token
-              ? <Routes />
-              : <Login />
-            }
-            {message?.visible && (
-                <MessageBox data={message} />
-            )}
-        </View>
+      <StatusBar 
+        barStyle="light-content" 
+        backgroundColor="transparent" 
+        translucent 
+      />
+      <NavigationContainer>
+        {
+          loggedUser.token
+          ? <Routes />
+          : <Login />
+        }
+      </NavigationContainer>
+      {message?.visible && (
+          <MessageBox data={message} />
+      )}
     </Background>
   );
 }

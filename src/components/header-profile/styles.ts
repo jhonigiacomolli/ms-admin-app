@@ -16,6 +16,9 @@ export const style = StyleSheet.create({
         borderColor: theme.colors.primary80,
         padding: 10,
     },
+    profile: {
+        borderRadius: 50,
+    },
     content: {
         flex: 1,
         marginHorizontal: 10,

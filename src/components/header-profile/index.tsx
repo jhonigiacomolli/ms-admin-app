@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Image, Text, View } from "react-native"
 import { style } from "./styles"
 import DefaultProfilePic from 'assets/icon-user.svg'
@@ -9,13 +9,20 @@ import { theme } from "global/theme"
 
 export const HeaderProfile = () => {
     const { loggedUser } = useAuth()
+    const [picture, setPicture] = useState<string>()
+
+    console.log(loggedUser.picture);
+    
+    useEffect(() => {
+        setPicture(loggedUser?.picture ) 
+    }, [loggedUser])
     
     return (
         <View style={style.container}>
             <View style={style.picture}>
                 {
                     loggedUser?.picture
-                    ? <Image source={{ uri: loggedUser?.picture }} />
+                    ? <Image source={{ uri: picture }} width={65} height={65} style={style.profile} />
                     : <DefaultProfilePic width={55} height={55} />
 
                 }
