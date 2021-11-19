@@ -50,3 +50,21 @@ export type Type_IconsList = 'edit' | 'add' | 'graph' | 'list' | 'config' | 'tra
 export type Type_ButtonIcons = {
     [key in Type_IconsList]: FC<SvgProps>
 }
+export type Type_Category = {
+    id: number
+    name: string
+  }
+export type Type_Articles = {
+    id: number
+    slug: string
+    title: string
+    description: string
+    thumbnailID: number
+    thumbnail: string
+    postDate: string
+    author: number
+    authorName: string
+    categories: Type_Category[]
+    tags: Type_Category[]
+    numberComments: number
+  }

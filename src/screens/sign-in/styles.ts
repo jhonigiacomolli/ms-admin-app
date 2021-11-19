@@ -17,6 +17,7 @@ export const style = StyleSheet.create({
         marginTop: -30,
     },
     iconcontainer: {
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
@@ -24,16 +25,16 @@ export const style = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        left: 15,
+        left: 50,
     },
     showIcon: {
         position: 'absolute',
-        right: 15,
+        right: 50,
     },
     input: {
-        width: 320,
+        flex: 1,
         height: 55,
-        paddingLeft: 75,
+        paddingLeft: 65,
         borderWidth: 1,
         borderStyle: 'solid',
         borderRadius: 10,
@@ -43,8 +44,10 @@ export const style = StyleSheet.create({
         fontFamily: theme.fonts.text,
         fontSize: 20,
         lineHeight: 25,
+        marginHorizontal: 30,
     },
     button: {
         marginTop: 20,
+        marginHorizontal: 30,
     }
 })
