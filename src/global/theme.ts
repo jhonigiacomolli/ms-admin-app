@@ -13,6 +13,7 @@ export const theme= {
         heading: '#DDE3F0',
         body: '#C4ABCC',
         noDetach: '#717171',
+        overlay: '#000000c4'
     },
     fonts: {
         text: 'Gafata_400Regular',

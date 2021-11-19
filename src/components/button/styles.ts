@@ -3,7 +3,8 @@ import { theme } from 'global/theme'
 
 export const style = StyleSheet.create({
     container: {
-        width: 320,
+        width: '100%',
+        minWidth: 320,
         height: 55,
         alignItems: 'center',
         justifyContent: 'center',

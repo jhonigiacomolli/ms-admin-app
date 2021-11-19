@@ -9,26 +9,29 @@ import IconPassword from 'assets/icon-password.svg'
 import DisplayPassIcon from 'assets/icon-display-pass.svg'
 import { Button } from 'components/button'
 import { useAuth } from 'hooks/auth'
+import { useGlobalContext } from 'hooks/global'
 
 export const Login = () => {
     const [hidePass, setHidePass] = useState(true)
     const [domain, setDomain] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const { updateMessage } = useGlobalContext()
     const { verifyCredentials, loggedUser, loading } = useAuth()
 
     const handleDisplayPass = () => {
         setHidePass(old => !old)
     }
-    
-    const login = async () => {
 
+    const login = async () => {
         if(domain && username && password) {
             verifyCredentials(domain, username, password)
-        }     
-           
-
-        
+        }else {
+            updateMessage({
+                visible: true,
+                message: 'Preencha todos os dados para realizar a autenticação!'
+            })
+        }
     }
 
     return (
@@ -41,12 +44,13 @@ export const Login = () => {
             <View style={style.content} >
                 <View style={style.iconcontainer}>
                     <IconDomain style={style.icon} width={25} height={25} />
-                    <TextInput 
+                    <TextInput
                         value={domain}
                         onChangeText={setDomain}
                         style={style.input} 
                         placeholder='Domínio'
                         placeholderTextColor={theme.colors.primary50} 
+                        
                     />
                 </View>
                 <View style={style.iconcontainer}>
@@ -81,7 +85,7 @@ export const Login = () => {
                     text='Acessar' 
                     onPress={login}
                 />
-            }
+            }  
         </View>
     )
 }
